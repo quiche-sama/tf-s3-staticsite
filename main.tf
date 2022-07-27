@@ -7,7 +7,7 @@ resource "aws_s3_bucket" "site" {
 
 
 }
-resource "aws_s3_bucket_website_configuration" "site" {
+resource "aws_s3_bucket_website_configuration" "website" {
   bucket = aws_s3_bucket.site
 
   index_document {

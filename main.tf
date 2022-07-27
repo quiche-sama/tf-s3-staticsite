@@ -14,7 +14,7 @@ resource "aws_s3_bucket" "site" {
 }
 
 resource "aws_s3_bucket_policy" "site" {
-  bucket = aws_s3_bucket.site.id
+  bucket = aws_s3_object.site.id
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -32,7 +32,7 @@ resource "aws_s3_bucket_policy" "site" {
     ]
   })
 }
-resource "aws_s3_object " "index" {
+resource "aws_s3_object" "index" {
   # Must have bucket versioning enabled first
   key = "index.html"
   bucket = aws_s3_bucket.site.id

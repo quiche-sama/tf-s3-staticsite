@@ -4,26 +4,14 @@ provider "aws" {
 
 resource "aws_s3_bucket" "site" {
   bucket = var.site_domain
-}
-
-resource "aws_s3_bucket_website_configuration" "site" {
-  bucket = aws_s3_bucket.site.id
-
-  index_document {
-    suffix = "index.html"
-  }
-
-  error_document {
-    key = "error.html"
-  }
-}
-
-resource "aws_s3_bucket_acl" "site" {
-  bucket = aws_s3_bucket.site.id
-
+    website {
+      index_document = "index.html"
+      error_document = "error.html"
+    }
   acl = "public-read"
-}
 
+
+}
 
 resource "aws_s3_bucket_policy" "site" {
   bucket = aws_s3_bucket.site.id
@@ -44,9 +32,8 @@ resource "aws_s3_bucket_policy" "site" {
     ]
   })
 }
-resource "aws_s3_bucket_object" "index" {
+resource "aws_s3_object " "index" {
   # Must have bucket versioning enabled first
-
   key = "index.html"
   bucket = aws_s3_bucket.site.id
   source = "index.html"

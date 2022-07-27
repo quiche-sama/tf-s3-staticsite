@@ -46,8 +46,8 @@ resource "aws_s3_bucket_policy" "site" {
   })
 }
 resource "aws_s3_object" "index" {
-  # Must have bucket versioning enabled first
   key = "index.html"
   bucket = aws_s3_bucket.site.id
   source = "index.html"
+  content-type = "text/html"
 }

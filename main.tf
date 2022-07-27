@@ -49,5 +49,5 @@ resource "aws_s3_object" "index" {
   key = "index.html"
   bucket = aws_s3_bucket.site.id
   source = "index.html"
-  content-type = "text/html"
+  content_type = "text/html"
 }

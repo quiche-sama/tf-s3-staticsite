@@ -8,6 +8,7 @@ Add the repo within terraform cloud, add variables, plan and apply
 ## Needed variables
 ```
 AWS_SECRET_ACCESS_KEY
+AWS_ACCESS_KEY_ID
 aws_region
 site_domain 
 ```
